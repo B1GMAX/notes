@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 
 import 'note_witget.dart';
 
-class Notes_ListWidget extends StatelessWidget {
+class NotesListWidget extends StatelessWidget {
   final AsyncSnapshot<QuerySnapshot> querySnapshot;
 
-  const Notes_ListWidget({
+  const NotesListWidget({
     Key? key,
     required this.querySnapshot,
   }) : super(key: key);

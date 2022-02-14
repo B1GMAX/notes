@@ -70,7 +70,7 @@ class _MainScreenState extends State<MainScreen>
                               child: AnimatedOpacity(
                                 opacity: snapshot.data! ? 1.0 : 0.0,
                                 duration: const Duration(milliseconds: 500),
-                                child: Notes_ListWidget(
+                                child: NotesListWidget(
                                   querySnapshot: querySnapshot,
                                 ),
                               ),
