@@ -31,7 +31,7 @@ class _MainScreenState extends State<MainScreen>
                 title: const Text('Your Notes'),
                 actions: [
                   Switch(
-                    value: context.read<MainScreenBloc>().switchToggle,
+                    value:snapshot.data!,
                     onChanged: (value) {
                       context.read<MainScreenBloc>().toggle();
                     },
@@ -50,7 +50,7 @@ class _MainScreenState extends State<MainScreen>
                 child: const Icon(Icons.add),
               ),
               body: StreamBuilder<QuerySnapshot>(
-                stream: context.read<MainScreenBloc>().snapshot,
+                stream: context.read<MainScreenBloc>().dataSteram,
                 builder: (context,  querySnapshot) {
                   return querySnapshot.hasData
                       ? Stack(
@@ -60,7 +60,7 @@ class _MainScreenState extends State<MainScreen>
                               child: AnimatedOpacity(
                                 opacity: snapshot.data! ? 0.0 : 1.0,
                                 duration: const Duration(milliseconds: 500),
-                                child: GridWidget(
+                                child: NotesGridWidget(
                                   querySnapshot: querySnapshot,
                                 ),
                               ),
@@ -70,7 +70,7 @@ class _MainScreenState extends State<MainScreen>
                               child: AnimatedOpacity(
                                 opacity: snapshot.data! ? 1.0 : 0.0,
                                 duration: const Duration(milliseconds: 500),
-                                child: ListWidget(
+                                child: Notes_ListWidget(
                                   querySnapshot: querySnapshot,
                                 ),
                               ),

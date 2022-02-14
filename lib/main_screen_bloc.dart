@@ -10,12 +10,12 @@ class MainScreenBloc {
   final CollectionReference _notes =
       FirebaseFirestore.instance.collection('notes');
 
-  Stream<QuerySnapshot<Object?>> get snapshot => _notes.snapshots();
+  Stream<QuerySnapshot<Object?>> get dataSteram => _notes.snapshots();
 
-  bool switchToggle = false;
+  bool _switchToggle = false;
 
   void toggle() {
-    _switchStreamController.add(switchToggle = !switchToggle);
+    _switchStreamController.add(_switchToggle = !_switchToggle);
   }
 
   String _deletedTitle = '';
